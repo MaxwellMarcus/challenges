@@ -44,4 +44,30 @@ def alphabetSort(string):
     ans = final
     return ans
 
-print(alphabetSort(input('string: '))) 
+def biggestSquareMatrix(matrix):
+    lines = []
+    ans = 0
+    i = 0
+    while i < len(matrix):
+        sub = matrix[i]
+        longestLine = 0
+        started = False
+        q = 0
+        while q < len(sub):
+            if sub[q] == 1 and not started:
+                started = True
+                spot = [i,q]
+                longestLine += 1
+            elif started:
+                if sub[q] == 1:
+                    longestLine += 1
+                if sub[q] == 0:
+                    lines += [[longestLine,spot]]
+                    longestLine = 0
+                    started = False
+
+            q += 1
+        i += 1
+    
+    return lines
+print(biggestSquareMatrix([[0,0,0],[1,1,0],[0,1,0]]))
