@@ -46,6 +46,7 @@ def alphabetSort(string):
 
 def biggestSquareMatrix(matrix):
     lines = []
+    squares = []
     ans = 0
     i = 0
     while i < len(matrix):
@@ -68,6 +69,11 @@ def biggestSquareMatrix(matrix):
 
             q += 1
         i += 1
-    
+    i = 0
+    while i < len(lines):
+        q = 0
+        line = lines[i]
+        while q < len(lines):
+
     return lines
-print(biggestSquareMatrix([[0,0,0],[1,1,0],[0,1,0]]))
+print(biggestSquareMatrix([[0,0,0],[1,1,0],[1,1,0]]))
