@@ -75,5 +75,11 @@ def biggestSquareMatrix(matrix):
         line = lines[i]
         while q < len(lines):
 
+            if lines[q][1][0] == line[1][0] + 1 or lines[q][1][0] == line[1][0] - 1:
+                z = 2
+                while z < line[0]:
+                    b = 0
+                    while b < len(lines):
+
     return lines
 print(biggestSquareMatrix([[0,0,0],[1,1,0],[1,1,0]]))
