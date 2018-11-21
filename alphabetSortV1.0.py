@@ -44,4 +44,4 @@ def alphabetSort(string):
     ans = final
     return ans
 
-print(alphabetSort(input('string: ')))
+print(alphabetSort(input('string: '))) 
