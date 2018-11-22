@@ -1,3 +1,5 @@
+import random
+
 def alphabetSort(string):
     #string is a string that will be sorted in alphabetic order
 
@@ -47,7 +49,7 @@ def alphabetSort(string):
 def biggestSquareMatrix(matrix):
     lines = []
     squares = []
-    ans = 0
+    ans = 1
     i = 0
     while i < len(matrix):
         sub = matrix[i]
@@ -66,20 +68,54 @@ def biggestSquareMatrix(matrix):
                     lines += [[longestLine,spot]]
                     longestLine = 0
                     started = False
-
             q += 1
+        if started:
+            lines += [[longestLine,spot]]
         i += 1
     i = 0
     while i < len(lines):
         q = 0
         line = lines[i]
         while q < len(lines):
-
-            if lines[q][1][0] == line[1][0] + 1 or lines[q][1][0] == line[1][0] - 1:
-                z = 2
-                while z < line[0]:
+            if lines[q][1][0] == line[1][0] + 1 and lines[q][0] == line[0]:
+                height = 0
+                z = 0
+                while z < line[0] + 1:
                     b = 0
                     while b < len(lines):
+                        if lines[q][1][0] == line[1][0] + z and lines[q][0] == line[0]:
+                            height += 1
+                            if height == line[0]:
+                                squares.append([height**2,line[1]])
+                        b += 1
+                    z += 1
 
-    return lines
-print(biggestSquareMatrix([[0,0,0],[1,1,0],[1,1,0]]))
+
+            q += 1
+        i += 1
+
+    i = 0
+    while i < len(squares):
+        if not squares[i][0] >= 4:
+            squares.remove(squares[i])
+        i += 1
+
+    return squares
+
+matrix = []
+i = 0
+while i < 100:
+    k = 0
+    subList = []
+    while k < 10:
+        subList.append(random.randint(0,1))
+        k += 1
+    matrix.append(subList)
+    i += 1
+
+i = 0
+while i < 100:
+    print(matrix[i])
+    i += 1
+
+print(biggestSquareMatrix(matrix))
